@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import co.miniforge.corey.mediatracker.MediaItemDetailActivity;
+import co.miniforge.corey.mediatracker.MyListActivity;
 import co.miniforge.corey.mediatracker.R;
 import co.miniforge.corey.mediatracker.model.MediaItem;
 
@@ -50,6 +51,21 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
 
                 context.startActivity(intent);
 
+            }
+        });
+
+        //Long click listener function
+
+        //The function returns a boolean to indicate whether you have handled
+        // the click event or not. If you have not, then it will pass the event to other
+        // listeners (there are none in this case, so the functionality doesn’t change)
+        inflated.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+            //cast the context that is stored to MyListActivity,
+                ((MyListActivity)context).deleteMediaItem(mediaItem);
+                //change return value to true
+                return true;
             }
         });
     }

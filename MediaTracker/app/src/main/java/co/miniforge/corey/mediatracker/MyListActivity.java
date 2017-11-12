@@ -121,4 +121,22 @@ public class MyListActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
         media_list_recycler.setLayoutManager(manager);
     }
+
+    //This function will loop through the items in the media item list,
+    // remove the media item that has a matching id, and then reload the list
+    // using the storage utility
+    public void deleteMediaItem(MediaItem item)
+    {
+        //The function takes in a MediaItem object as its parameter.
+        for(int i = 0; i < mediaItems.size(); i++){
+            if(mediaItems.get(i).id.equals(item.id)){
+
+                //remove the media Item
+                mediaItems.remove(i);
+                storageUtil.saveMediaData(mediaItems);
+                updateMediaItems(storageUtil.getMediaDataList());
+                break;
+            }
+        }
+    }
 }
