@@ -50,10 +50,12 @@ public class MediaItem {
         this.title = "defaultTitle";
         this.description = "defaultDescription";
         this.url = "defaultUrl";
+
+
     }
 
     //getTypeForString will pull the type value from the JSON object.
-    MediaItemType getTypeForString(String value){
+    public MediaItemType getTypeForObject(String value){
         switch (value){
             case "TV":
                 return  MediaItemType.TV;
@@ -84,6 +86,8 @@ public class MediaItem {
             mediaItem.put("title", this.title);
             mediaItem.put("description", this.description);
             mediaItem.put("url", this.url);
+
+            mediaItem.put("type",this.type);
         } catch (Exception e){
             Log.e("toJSONError", String.format("There was an error: %s", e.getMessage()));
         }
